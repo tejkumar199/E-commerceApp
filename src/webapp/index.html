@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-commerce Web Application</title>
+</head>
+<body>
+    <h1>Products</h1>
+    <ul id="products"></ul>
+    <script>
+        fetch('/api/products')
+            .then(response => response.json())
+            .then(data => {
+                const products = document.getElementById('products');
+                data.forEach(product => {
+                    const li = document.createElement('li');
+                    li.textContent = `${product.name} - $${product.price}`;
+                    products.appendChild(li);
+                });
+            });
+    </script>
+</body>
+</html>
